@@ -1,0 +1,113 @@
+{
+  "reload_style_on_change": true,
+  "layer": "top",
+  "position": "top",
+  "height": 30,
+  "margin": "0 4 0 4",
+  "modules-left": ["cpu","memory","hyprland/workspaces", "custom/media"],
+  "modules-center": ["clock"],
+  "modules-right": [
+    "tray",
+    "network",
+    "bluetooth",
+    "pulseaudio",
+    "battery"
+  ],
+
+  "custom/media": {
+    "exec": "playerctl metadata --format ' {{artist}} - {{title}}'",
+    "interval": 5,
+    "return-type": "string",
+    "format": "{}",
+    "tooltip": false
+  },
+
+  "network": {
+    "format-wifi": "",
+    "format-ethernet": "󰈀",
+    "format-disconnected": "󰖪a",
+    "format-disabled": "󱘖",
+    "tooltip": true,
+    "tooltip-format-wifi": "{essid}\n{ifname} - {ipaddr} - {signalStrength}%",
+    "interval": 5,
+    "tooltip-format-ethernet": "{ifname} - {ipaddr}",
+    "on-click": "nm-connection-editor",
+    "on-click-right": "nmcli radio wifi $( [ \"$(nmcli radio wifi)\" = \"enabled\" ] && echo off || echo on )"
+  },
+
+  "bluetooth": {
+    "format-connected":"󰂱",
+    "format-off":"󰂲",
+    "format-disabled":"󰂲",
+    "format":"󰂯",
+    "tooltip": true,
+    "tooltip-format-connected": "{device_enumerate}",
+    "tooltip-format-enumerate-connected": "{device_alias}",
+    "on-click": "blueman-manager",
+    "on-click-right": "bluetoothctl power $(bluetoothctl show | grep -q \"Powered: no\" && echo on || echo off)"
+  },
+
+  "clock": {
+    "timezone": "Europe/Rome",
+    "format": "{:%d/%m/%y | %H:%M}",
+    "tooltip": false,
+    "on-click": "swaync-client -t -sw"
+  },
+  
+  "memory": {
+    "interval": 5,
+    "format": " {percentage}%",
+    "tooltip": false,
+    "on-click":"kitty btop"
+  },
+  "cpu": {
+    "interval": 5,
+    "format": " {usage}%",
+    "tooltip": false,
+    "on-click":"kitty btop"
+  },
+
+  "battery": {
+    "format": "{icon} {capacity}%",
+    "full-at": 80,
+    "states": {
+		"warning": 35,
+		"critical": 20
+	  },
+    "events": {
+      "on-discharging-warning": "notify-send -u normal 'Low Battery'",
+      "on-discharging-critical": "notify-send -u critical 'Very Low Battery'"
+     },
+    "format-plugged": "󱐋 {capacity}%",
+    "format-icons": ["", "", "", "", ""],
+    "tooltip": true,
+    "format-time": "{H}h {M}m",
+    "align":"center",
+    "justify":"center",
+    "tooltip-format": "{power:.2f}W\n{time}"
+  },
+
+
+  "pulseaudio": {
+    "format": "{icon} {volume}%",
+    "format-bluetooth": "{icon} {volume}%",
+    "format-muted": "",
+    "format-icons": {
+        "headphones": "󰋋",
+        "handsfree": "󱡏",
+        "headset": "󰋎",
+        "phone": "󰏶",
+        "phone-muted": "󱔰",
+        "portable": "",
+        "car": "󱡸",
+        "default": ["", "",""]
+      },
+    "scroll-step": 5,
+    "on-click": "pavucontrol",
+    "on-click-right": "wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle"
+  },
+
+  "tray": {
+    "spacing": 8
+  }
+}

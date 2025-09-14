@@ -1,0 +1,62 @@
+@import "../style/colors.css";
+
+.notification {
+    background: alpha(@base-light, 0.70);
+    color: @text;
+    border-radius: 16px;
+    border: 1px solid @blue;
+    box-shadow: 0 2px 8px 0 rgba(0,0,0,0.25);
+    padding: 12px 18px;
+    margin: 8px 0;
+    font-size: 1em;
+}
+
+.notification-actions:hover {
+}
+
+.notification.critical {
+    background: @red;
+    color: @base;
+    border: 1px solid @red;
+}
+
+.notification-title {
+    font-weight: bold;
+    color: @blue;
+    margin-bottom: 4px;
+}
+
+.notification-time {
+    color: @subtext0;
+    font-size: 0.9em;
+    margin-left: 12px;
+}
+
+.notification-actions button {
+    background: @blue;
+    color: @base;
+    border-radius: 8px;
+    border: none;
+    margin: 2px;
+    padding: 4px 8px;
+    transition: background 0.2s;
+}
+
+.notification-actions button:hover {
+    background: @lavender;
+    color: @base;
+}
+
+
+.notification-default-action:hover {
+  background:transparent;
+}
+
+.close-button {
+    background: transparent;
+    margin-right: -2px;
+    margin-top: 6px;
+}
+
+
+

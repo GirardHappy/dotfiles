@@ -1,0 +1,6 @@
+"custom/kb_layout":{
+    "exec": "hyprctl devices -j | grep -Po '\"active_keymap\"\\s*:\\s*\"\\K[^\"]+' | sed -n '5p' | cut -c1-2",
+    "interval": 1,
+    "format": " {}",
+    "tooltip": false 
+  }

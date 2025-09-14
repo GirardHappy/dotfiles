@@ -1,0 +1,80 @@
+@import "../style/colors.css";
+*{
+    transition:200ms;
+    color: @text-light;
+}
+
+
+.control-center {
+    background: alpha(@base, .55);
+    border-radius: 24px;
+    border: 1px solid @blue;
+    box-shadow: 0 0 10px 0 rgba(0, 0, 0, .6);
+    margin: 18px;
+    padding: 12px;
+    color: @text; /* Use main text color */
+}
+
+.control-center .notification-row .notification-background,
+.control-center .notification-row .notification-background .notification.critical {
+    margin: 4px 0px;
+    padding: 4px;
+    color: @text-light;
+}
+
+.widget-dnd {
+  margin: 6px;
+  font-size: 1.2rem;
+}
+
+.widget-dnd > switch:checked {
+  background: @base-light;
+}
+
+progressbar,
+progress,
+trough {
+  border-radius: 12px;
+}
+
+progressbar {
+  background-color: @blue;
+}
+
+.notification-group-icon {
+}
+
+.widget-buttons-grid {
+  font-size: large;
+  padding: 4px 2px;
+  margin: 4px;
+  border-radius: 12px;
+  background: @transparent;
+}
+
+.widget-buttons-grid>flowbox>flowboxchild>button {
+  margin: 4px 10px;
+  padding: 6px 12px;
+  background: @base-light;
+  border-radius: 8px;
+}
+
+.widget-title button{
+    background-color: @base-light;
+    padding: 2px 12px;
+}
+
+
+
+
+
+.widget-buttons-grid > flowbox > flowboxchild > button.toggle {
+  background-color: @purpler; /* background when OFF */
+  border-radius: 10px;
+  transition: background-color 0.2s ease;
+}
+
+.widget-buttons-grid > flowbox > flowboxchild > button.toggle:checked {
+  background-color: @base-light; /* background when ON */
+  color: #2e3440; /* optional: change text color when ON */
+}

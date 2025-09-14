@@ -1,0 +1,79 @@
+{
+  "$schema": "/etc/xdg/swaync/configSchema.json",
+  "positionX": "center",
+  "positionY": "top",
+	"cssPriority": "user",
+  "control-center-width": 680,
+  "control-center-height": 660, 
+  "control-center-margin-top": 8,
+  "control-center-margin-bottom": 2,
+  "control-center-margin-right": 1,
+  "control-center-margin-left": 0,
+
+  "notification-window-width": 400,
+  "notification-icon-size": 48,
+  "notification-body-image-height": 160,
+  "notification-body-image-width": 200,
+
+  "timeout": 4,
+  "timeout-low": 2,
+  "timeout-critical": 6,
+  
+  "fit-to-screen": false,
+  "keyboard-shortcuts": true,
+  "image-visibility": "when-available",
+  "transition-time": 200,
+  "hide-on-clear": false,
+  "hide-on-action": false,
+  "script-fail-notify": true,
+  "scripts": {
+    "example-script": {
+      "exec": "echo 'Do something...'",
+      "urgency": "Normal"
+    }
+  },
+  "notification-visibility": {
+    "example-name": {
+      "state": "muted",
+      "urgency": "Low",
+      "app-name": "Yt Music"
+    }
+  },
+  "widgets": [
+    "buttons-grid",
+    "mpris",
+    "notifications"
+  ],
+  "widget-config": {
+    "mpris": {
+      "image-size": 96,
+      "image-radius": 12
+    },
+    "volume": {
+      "label": "󰕾",
+        "show-per-app": true
+    },
+    "buttons-grid": {
+      "actions": [
+        {
+          "label": "󰛊",
+          "type": "toggle",
+          "command": "sh -c 'if [ \"$SWAYNC_TOGGLE_STATE\" = \"true\" ]; then systemctl --user start hypridle.service; else systemctl --user stop hypridle.service; fi'",
+          "update-command": "systemctl --user is-active --quiet hypridle.service && echo true || echo false"
+        },{
+          "label": "",
+          "type": "toggle",
+          "command": "sh -c 'if [ \"$SWAYNC_TOGGLE_STATE\" = \"true\" ]; then swaync-client --dnd-on; else swaync-client --dnd-off; fi'",
+          "update-command": "swaync-client --get-dnd"
+        },
+        {
+          "label": "󰎟",
+          "command": "swaync-client --close-all"
+        },
+        {
+          "label": "⏻",
+          "command": "wlogout"
+        }
+    ]}
+  }
+}

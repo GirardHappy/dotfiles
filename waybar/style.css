@@ -1,0 +1,116 @@
+@import "../style/colors.css";
+
+* {
+  font-family: "JetBrainsMono Nerd Font", "Inter", sans-serif;
+  font-size: 13px;
+  min-height: 0;
+}
+
+#bar{
+  min-height: 0px;
+}
+
+window#waybar {background: transparent;}
+
+.modules-left,
+.modules-right,
+.modules-center {
+  background-color: @base;
+  border-radius: 6px;
+  margin-top: 4px;
+  padding: 0px 6px;
+  border: 1px solid @blue;
+}
+
+
+#workspace, #memory, #cpu, #custom-media, #clock{
+  padding: 4px 6px;
+  margin: 2px 1px;
+}
+
+#pulseaudio,#network, #bluetooth, #tray,#battery {
+  margin: 0px 6px;
+  padding: 0px 6px;
+}
+
+#workspaces button {
+  padding: 0 6px;
+  border-radius: 4px;
+  transition: all 0.3s ease;
+  color: @overlay2;
+}
+
+#workspaces button.focused {
+  background: @peach;
+}
+
+#workspaces button.active {
+  color: @text;
+}
+
+#workspaces button:hover {
+  background: @surface1;
+}
+
+
+
+#clock{
+  color: @blue;
+}
+
+
+#custom-media {
+  margin-left: 10px;
+  margin-right: 4px;
+  color: #7dcfff; 
+}
+
+#network, #network.disconnected{
+  color: @yellow;
+}
+
+#network.disabled {
+  color: @red; 
+}
+
+#network.wifi, #network.ethernet{
+  color:@blue;
+}
+
+
+#memory,
+#cpu {
+  color: @lavender;
+}
+
+#pulseaudio {
+  color: @mauve; 
+}
+
+#tray {
+  color: @text;
+}
+
+#battery {
+  color: @green; 
+}
+
+#battery.warning {
+  color: @yellow; 
+}
+
+#battery.critical {
+  color: @red; 
+}
+
+#bluetooth.on{
+  color:@blue;
+}
+
+#bluetooth.off {
+  color: @red; 
+}
+
+#bluetooth.disabled,#bluetooth {
+  color: @yellow; 
+}

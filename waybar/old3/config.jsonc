@@ -1,0 +1,85 @@
+{
+  "layer": "top",
+  "position": "top",
+  "margin-top": 4,
+  "margin-left": 4,
+  "margin-right": 4,
+  "height": 20,
+  "modules-left": ["cpu","memory","workspaces", "custom/media"],
+  "modules-center": ["custom/weather","clock","custom/calendar"],
+  "modules-right": [
+    "tray",
+    "network",
+    "bluetooth",
+    "pulseaudio",
+    "battery"
+  ],
+
+  
+  "custom/weather": {
+    "exec": "curl -s 'wttr.in/Rubiana?format=1'",
+    "interval": 600,
+    "format": "{}",
+    "tooltip": false
+  },
+
+  "custom/calendar": {
+    "exec": "date '+%a'",
+    "interval": 60,
+    "format": " {}",
+    "tooltip": false
+  },
+
+  "custom/media": {
+    "exec": "playerctl metadata --format ' {{artist}} - {{title}}'",
+    "interval": 5,
+    "return-type": "string",
+    "format": "{}",
+    "tooltip": false
+  },
+
+  "network": {
+    "format-wifi": " {signalStrength}%",
+    "format-ethernet": "󰈀 {ifname}",
+    "tooltip": false,
+    "on-click": "nm-connection-editor"
+  },
+
+  "bluetooth": {
+    "format": " {status}",
+    "tooltip": false,
+    "on-click": "blueman-manager"
+  },
+
+
+  "memory": {
+    "interval": 5,
+    "format": " {percentage}%",
+    "tooltip": false
+  },
+  "cpu": {
+    "interval": 5,
+    "format": " {usage}%",
+    "tooltip": false
+  },
+
+  "battery": {
+    "format": "{icon} {capacity}%",
+    "format-icons": ["", "", "", "", ""],
+    "tooltip": false
+  },
+
+  "pulseaudio": {
+    "format": "{icon} {volume}%",
+    "format-icons": {
+      "default": ["", "", ""]
+    },
+    "tooltip": false
+  },
+
+  
+
+  "tray": {
+    "spacing": 8
+  }
+}

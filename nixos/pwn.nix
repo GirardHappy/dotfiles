@@ -7,19 +7,18 @@
       glibc
    ];
  };
- 
+
+ imports = [ ./pwndbg.nix ]; 
  environment.systemPackages = with pkgs; [
    ghidra
    vscode
    binaryninja-free
-
+   gcc
    (python3.withPackages (ps: with ps; [ 
-     gdb
      pwntools
      requests
      beautifulsoup4 
    ]))
-   (import ./pwndbg.nix { inherit pkgs; })
  ];
 
 

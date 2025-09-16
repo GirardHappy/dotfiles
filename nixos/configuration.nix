@@ -1,9 +1,15 @@
-
-
 { config, pkgs, ... }:
 {
+  environment.variables.PYTHONHOME = "/nix/store/qwmi48z6ql3ff2609k2gg0ii3xgsc3g3-pwndbg-portable-2025.05.30+8";
+
+
+  programs.zsh.enable = true;
   programs.yazi.enable = true;
   services.blueman.enable = true;
+
+  programs.bash.shellAliases = {
+    snvim = "sudo -E nvim ";
+  };
 
 
   imports =[
@@ -23,6 +29,7 @@
     description = "girard";
     extraGroups = [ "networkmanager" "wheel" "docker" ];
     packages = with pkgs; [];
+    shell = pkgs.zsh;
   };
 
   nixpkgs.config.allowUnfree = true;
@@ -38,21 +45,22 @@
       wget
       kitty
       firefox
+      brave
       lf
       fastfetch
       git
       btop
       procps
       micro
-  ];
-  
+      neovim
+];
 
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
-
+ 
   virtualisation.docker.enable = true;
   #Auto update
   system.autoUpgrade = {
-    enable = true;
+     enable = true;
     dates = "weekly";
   };
   #Auto garbage collection

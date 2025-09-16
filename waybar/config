@@ -25,7 +25,7 @@
   "network": {
     "format-wifi": "",
     "format-ethernet": "󰈀",
-    "format-disconnected": "󰖪a",
+    "format-disconnected": "󰖪",
     "format-disabled": "󱘖",
     "tooltip": true,
     "tooltip-format-wifi": "{essid}\n{ifname} - {ipaddr} - {signalStrength}%",

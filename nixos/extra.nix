@@ -4,5 +4,6 @@
    youtube-music
    discord
    file-roller
+
   ];
 }

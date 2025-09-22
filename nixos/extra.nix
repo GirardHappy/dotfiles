@@ -4,6 +4,6 @@
    youtube-music
    discord
    file-roller
-
+   chatgpt-cli
   ];
 }

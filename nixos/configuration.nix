@@ -1,16 +1,14 @@
 { config, pkgs, ... }:
 {
-  environment.variables.PYTHONHOME = "/nix/store/qwmi48z6ql3ff2609k2gg0ii3xgsc3g3-pwndbg-portable-2025.05.30+8";
-
-
-  programs.zsh.enable = true;
   programs.yazi.enable = true;
   services.blueman.enable = true;
 
   programs.bash.shellAliases = {
     snvim = "sudo -E nvim ";
+    cwd = "wl-copy $(pwd);echo \"wd copied\"";
+    edit = "sudo -E nvim /etc/nixos";
+    rebuild = "sudo nixos-rebuild switch";
   };
-
 
   imports =[
     ./hardware-configuration.nix
@@ -20,7 +18,6 @@
   ];
 
   networking.hostName = "girard-laptop";
-  # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
   networking.networkmanager.enable = true;
 
 
@@ -29,8 +26,7 @@
     description = "girard";
     extraGroups = [ "networkmanager" "wheel" "docker" ];
     packages = with pkgs; [];
-    shell = pkgs.zsh;
-  };
+};
 
   nixpkgs.config.allowUnfree = true;
 
@@ -45,7 +41,6 @@
       wget
       kitty
       firefox
-      brave
       lf
       fastfetch
       git
@@ -53,6 +48,7 @@
       procps
       micro
       neovim
+      file
 ];
 
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
